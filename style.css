@@ -1,0 +1,66 @@
+@font-face {
+    font-family: 'VHS';
+    src: url('VCR_OSD_MONO.ttf') format('truetype');
+}
+*{
+    margin: 0;
+}
+#noise-toggle
+{
+    transition: ease-in-out 0.5s;
+    font-size: 5em;
+}
+.material-icons
+{
+    cursor: pointer;
+}
+body
+{
+    color: white;
+    font-family: 'VHS';
+    background-image: url('static.gif');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+#volume-up, #volume-down
+{
+    font-size: 4em;
+    transition: ease-in-out 0.5s;
+}
+#volume-up:hover, #volume-down:hover, #noise-toggle:hover
+{
+    transform: scale(1.1);
+}
+#noise-holder
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+#control-holder
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#cover
+{
+    pointer-events: none;
+    background-color: rgba(32, 29, 29, 0.651);
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
