@@ -3,10 +3,7 @@
     src: url('VCR_OSD_MONO.ttf') format('truetype');
 }
 *{
-    margin: 0;
-}
-h1{
-    margin: 1em;
+    margin: 0.1em;
 }
 a{
     text-decoration: none;

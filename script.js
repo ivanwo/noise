@@ -19,6 +19,8 @@ function toggleNoise() {
 function fadeIn(){
   //
   white.volume = 0;
+  let sliderObject = document.getElementById('slider');
+  let valueObject = document.getElementById("value");
   white.play();
   setTimeout((_) => {
     if (playing) {
@@ -26,7 +28,7 @@ function fadeIn(){
       white2.play();
     }
   }, 10000);
-  fade = setInterval( _ => {white.volume+=0.01}, 20)
+  fade = setInterval( _ => {white.volume+=0.01; sliderObject.value = white.volume*100; valueObject.innerText = Math.round(white.volume*100)}, 20)
   setTimeout((_) => 
     {
       clearInterval(fade);
@@ -34,21 +36,39 @@ function fadeIn(){
   
 }
 function fadeOut(){
-  //
+  // TODO: fix fade out later
   white.pause();
   white2.pause();
 }
 function volumeDown(){
   white2.volume = white.volume;
+  let valueObject = document.getElementById("value");
+  let sliderObject = document.getElementById('slider');
   if(white.volume > 0.05){
     white.volume -= 0.05;
     white2.volume -= 0.05;
+    sliderObject.value = white.volume*100; 
+    valueObject.innerText = Math.round(white.volume*100);
   }
 }
 function volumeUp(){
   white2.volume = white.volume;
+  let valueObject = document.getElementById("value");
+  let sliderObject = document.getElementById('slider');
   if(white.volume < 0.96){
     white.volume +=0.05;
     white2.volume +=0.05;
+    sliderObject.value = white.volume*100; 
+    valueObject.innerText = Math.round(white.volume*100);
+  }
+}
+let adjustAudio = _ => {
+  let valueObject = document.getElementById("value");
+  let sliderObject = document.getElementById('slider');
+  let newVolume  = Number.parseInt(sliderObject.value);
+  valueObject.innerText = newVolume;
+  if(playing){
+    white.volume = newVolume/100;
+    white2.volume = newVolume/100;
   }
 }
