@@ -1,32 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./favicon.ico?" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    rel="stylesheet">
-    <script src="script.js" defer></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./favicon.ico?" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="loopify.js" type="text/javascript"></script>
+    <script>
+      // SUpply an audio filename and a callback
+      var playing = false;
+      loopify("noise.wav", function (err, loop) {
+        // If something went wrong, `err` is supplied
+        if (err) {
+          return console.err(err);
+        }
+
+        // Play it whenever you want
+        document
+          .getElementById("noise-toggle")
+          .addEventListener("click", (_) => {
+            console.log(loop);
+            if (!playing) {
+              loop.play();
+              playing = true;
+            } else {
+              loop.stop();
+              playing = false;
+            }
+          });
+
+        document.getElementById("volume-up").addEventListener("click", (_) => {
+          //   console.log(loop);
+          // loop.
+        });
+
+        // Stop it later if you feel like it
+        // loop.stop();
+      });
+    </script>
     <title>WHITE NOISE</title>
-</head>
-<body>
-    <DIV id="noise-holder">
-        <h1><a href="">DISTRA.CC</a></h1>
-        <div id="control-holder">
-            <span class="material-icons volume" id="volume-down" onclick="volumeDown()">
-            volume_down
-            </span>
-            <span class="material-icons" id="noise-toggle" onclick="toggleNoise()">
-            play_circle
-            </span>
-            <span class="material-icons volume" id="volume-up" onclick="volumeUp()">
-            volume_up
-            </span>
-        </div>
-        <input id="slider" oninput="adjustAudio()" type="range" min="0" max="100" value="0"/>
-        <p id="value">0</p>
-    </DIV>
+  </head>
+  <body>
+    <div id="noise-holder">
+      <h1><a href="">WHITE NOISE BUTTON</a></h1>
+      <div id="control-holder">
+        <!-- <span
+          class="material-icons volume"
+          id="volume-down"
+          onclick="volumeDown()"
+        >
+          volume_down
+        </span> -->
+        <span class="material-icons" id="noise-toggle"> play_circle </span>
+        <!-- <span class="material-icons volume" id="volume-up" onclick="volumeUp()">
+          volume_up
+        </span> -->
+      </div>
+      <!-- <input
+        id="slider"
+        oninput="adjustAudio()"
+        type="range"
+        min="0"
+        max="100"
+        value="0"
+      />
+      <p id="value">0</p> -->
+    </div>
     <div id="cover"></div>
-</body>
-</html> 
+  </body>
+</html>
