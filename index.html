@@ -33,6 +33,19 @@
             }
           });
 
+        document
+          .getElementById("noise-toggle")
+          .addEventListener("touchend", (_) => {
+            console.log(loop);
+            if (!playing) {
+              loop.play();
+              playing = true;
+            } else {
+              loop.stop();
+              playing = false;
+            }
+          });
+
         document.getElementById("volume-up").addEventListener("click", (_) => {
           //   console.log(loop);
           // loop.
